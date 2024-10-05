@@ -1,0 +1,26 @@
+ .ul{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border:2px solid black;
+
+}
+.ul li,.bill_heading {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+
+}
+.ul div{
+}
+.bill_heading {
+    border:1px solid green
+}
+
+.total{
+    display: flex;
+    justify-content: end;
+    width: 72%;
+    
+}

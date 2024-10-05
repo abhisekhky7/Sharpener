@@ -1,0 +1,21 @@
+.product_container{
+    display: flex;
+    justify-content: space-between;
+    border:2px solid black;
+
+
+}
+
+.description{
+    display: flex;
+    width:50%;
+    justify-content: space-around;
+}
+
+.product_quantity{
+    display: flex;
+    width:50%;
+    justify-content: space-around;
+
+}
+

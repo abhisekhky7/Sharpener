@@ -1,0 +1,42 @@
+
+
+.input_container{
+    border:2px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.first{
+    border:2px solid black;
+
+    display: flex;
+    align-items: center;
+}
+.first div  {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:5px;
+    
+}
+.quantity_container{
+    border:2px solid black;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.quantity_container div{
+    display: flex;
+}
+.quantity_container div div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
