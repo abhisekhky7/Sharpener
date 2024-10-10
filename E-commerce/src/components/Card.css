@@ -1,0 +1,39 @@
+.image{
+    width:250px;
+    height: 250px;
+    overflow: hidden;
+}
+.card{
+    border:none
+}
+
+.card img{
+    transform-origin: center center;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    transition: ease-in 0.5s;
+    filter: brightness(100%);
+}
+
+.card img:hover{
+    transform: scale(1.5);
+    filter: brightness(130%);
+}
+
+.addToCart_btn{
+    cursor: pointer;
+    padding: 8px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 4%;
+    background: #56CCF2;
+}
+
+.addToCart_btn:hover{
+    background: #0eabdf;
+}
