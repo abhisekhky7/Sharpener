@@ -1,0 +1,13 @@
+.dropdown-menu li:hover{
+    cursor: pointer;
+    background: rgb(195, 190, 190);
+    
+}
+
+
+.first-login{
+    position: fixed;
+    top:50%;
+    left:45%;
+    font-size:1.5rem
+}
