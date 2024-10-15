@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import { logout } from "../store/AuthSlice";
@@ -13,6 +13,9 @@ export default function RootLayout() {
   const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme') === 'dark' || false
   );
+
+  const uid = useSelector((state) => state.auth.uid); 
+  const token = useSelector((state) => state.auth.token);
 
   const handleLogout = () => {
     dispatch(logout())
@@ -47,7 +50,7 @@ export default function RootLayout() {
   };
 
   const handleDownload = async () => {
-    const databaseURL = "https://sharpener-b0c8a-default-rtdb.asia-southeast1.firebasedatabase.app/expense.json";  // Firebase URL
+    const databaseURL = `https://sharpener-b0c8a-default-rtdb.asia-southeast1.firebasedatabase.app/users/${uid}/expenses.json?auth=${token}`;  // Firebase URL
   
     try {
       const response = await fetch(`${databaseURL}`, { method: 'GET' });
@@ -76,6 +79,7 @@ export default function RootLayout() {
                   Menu
                 </button>
                 <ul className="dropdown-menu px-3 menu">
+                 {/* <li><Link to={'/profile'}>Profile</Link></li> */}
                  <li onClick={toggleTheme}> {isDarkMode ? 'Light' : 'Dark'} Mode</li>
                  <li onClick={handleDownload}>Download data</li>
                  <li onClick={handleLogout}>Logout</li>

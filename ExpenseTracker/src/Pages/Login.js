@@ -55,7 +55,7 @@ export default function Login() {
             }
           }).then((data)=>{
             if (isLoggedIn) {
-                dispatch(login(data.idToken))
+                dispatch(login({token:data.idToken,uid:data.localId}));
                 navigate('/'); 
               } else {
                 alert("User created")

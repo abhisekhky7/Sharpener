@@ -4,7 +4,8 @@ import './HomePage.css'
 import Loader from '../components/Loader';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {saveExpenseToFirebase,deleteExpense} from '../store/ExpenseSlice';
 
 export default function HomePage(){
 
@@ -14,95 +15,40 @@ export default function HomePage(){
   const [isLoading,setisLoading]=useState(false)
   const [list,setList]=useState([]);
   const isLoggedIn = useSelector((state)=>state.auth.isLoggedIn)
+  const expense = useSelector((state)=>state.expenses.expenses);
+  const dispatch = useDispatch();
+
 
   const handleCategory =(cat) =>{
     setCategory(cat);
   }
-    const fetchData = async ()=>{
-      setisLoading(true);
-      try{
-        console.log("calling api")
-        const response = await fetch("https://sharpener-b0c8a-default-rtdb.asia-southeast1.firebasedatabase.app/expense.json");
-        if(!response.ok){
-          alert("Something went wrong");
-          return;
-        }
-        
-        const data = await response.json();
-          const newList = [];
-          for(let i in data){
-            newList.push({...data[i],id:i});
-          }
-          console.log(newList)
-          setList(newList)
-       
 
-      }catch(err){
-        console.log(err)
-      }finally{
-        setisLoading(false);
-      }
-    }
+    
   const handleSubmit = async (event)=>{
     event.preventDefault();
     if(!amount || !desc){
       alert("Fill all the inputs");
       return;
     }
-    setisLoading(true);
-    try {
-      const response = await fetch("https://sharpener-b0c8a-default-rtdb.asia-southeast1.firebasedatabase.app/expense.json",{
-        method:"POST",
-        body:JSON.stringify({
-          amount,
-          desc,
-          category,
-        }),
-        headers:{
-          'Content-Type':'aplication/json',
-        }
-      })
-
-      if(!response.ok){
-        const error = await response.text();
-        throw new Error(`Error updating entry: ${error}`);
-      }
-      if(response.ok){
-        console.log("successfully added")
-      }
-      fetchData();
-
-    } catch (error) {
-      alert("Something went wrong.")
-      console.log(error)
-    }finally{
-      setisLoading(false);
-      setAmount(0);
-      setDesc("");
-      setCategory("Petrol")
-    }
+    dispatch(saveExpenseToFirebase({amount,desc,category,id:Math.random().toString()}));
+   
+    setAmount(0);
+    setDesc("");
+    setCategory("Petrol")
 
   }
-  useEffect(()=>{
-    fetchData();
-  },[])
 
-  const handleDelete =async (id)=>{
-    try {
-      await fetch(`https://sharpener-b0c8a-default-rtdb.asia-southeast1.firebasedatabase.app/expense/${id}.json`,{
-            method:"DELETE"
-        })
-       await  fetchData();
-    } catch (error) {
-        alert("Error deleting data",error)
-    }
+
+  const handleDelete = (fireId,id)=>{
+    dispatch(deleteExpense({fireId,id}))
+   
 }
 
   const handleEdit =async (item)=>{
     setCategory(item.category);
-    setAmount(item.amount);    setDesc(item.desc)
-
-    await handleDelete(item.id)
+    setAmount(item.amount);   
+     setDesc(item.desc)
+    handleDelete(item.fireId,item.id)
 
   }
 
