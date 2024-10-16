@@ -36,6 +36,7 @@ export default function ForgotPass() {
                 alert("Email sent");
                 setisLoading(false);
             }
+        
 
     }
   return (

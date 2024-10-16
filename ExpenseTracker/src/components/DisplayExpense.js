@@ -7,7 +7,6 @@ import {deleteExpense, fetchExpenseFromFirebase} from '../store/ExpenseSlice';
 const DisplayExpense=({handleDelete,handleEdit})=> {
   
 
-  // const [list,setList]= useState([]);
   const dispatch = useDispatch();
   const total = useSelector((state)=>state.expenses.totalAmount)
   const list = useSelector((state)=>state.expenses.expenses);

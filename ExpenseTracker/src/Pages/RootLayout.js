@@ -79,7 +79,7 @@ export default function RootLayout() {
                   Menu
                 </button>
                 <ul className="dropdown-menu px-3 menu">
-                 {/* <li><Link to={'/profile'}>Profile</Link></li> */}
+                 <li><Link to={'/profile'}>Profile</Link></li>
                  <li onClick={toggleTheme}> {isDarkMode ? 'Light' : 'Dark'} Mode</li>
                  <li onClick={handleDownload}>Download data</li>
                  <li onClick={handleLogout}>Logout</li>

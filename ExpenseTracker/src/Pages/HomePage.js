@@ -24,7 +24,7 @@ export default function HomePage(){
   }
 
     
-  const handleSubmit = async (event)=>{
+  const handleSubmit =  (event)=>{
     event.preventDefault();
     if(!amount || !desc){
       alert("Fill all the inputs");
