@@ -1,0 +1,13 @@
+.myDiv{
+
+    width: 50%;
+   
+    @media (min-width:768px) {
+        width:25%;
+       
+    }
+
+    /* @media (min-width:768px) {
+        width:50%
+    } */
+}

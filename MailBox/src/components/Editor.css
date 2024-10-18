@@ -1,0 +1,58 @@
+.recipient li{
+  /* background-color: red; */
+  list-style-type: none;
+  padding: 4px;
+  font-size: 15px;
+}
+
+.remove{
+  /* font-size: 5px; */
+  padding:0;
+  margin-left: 4px;
+  width:18px;
+  height: 23px;
+}
+
+.myContainer{
+  max-width: 500px;
+  margin: '0 auto';
+  padding: '20px';
+  border: '1px solid #ddd';
+}
+
+.myContainer input{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+
+}
+
+
+
+.editor-container {
+    position: relative;
+    background-color: red;
+  }
+  
+  .demo-wrapper {
+    display: flex;
+    flex-direction: column;
+
+  }
+  
+  .demo-toolbar {
+    order: 2;
+    margin-top: 10px;
+
+  }
+  
+  .demo-editor {
+    order: 1;
+    border: 1px solid #ddd;
+    padding: 10px;
+    min-height: 200px;
+
+  }
+  
