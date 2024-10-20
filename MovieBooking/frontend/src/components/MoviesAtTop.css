@@ -1,0 +1,42 @@
+li {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  /* The overlay div (initially hidden) */
+  .test {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Semi-transparent background */
+    color: white;
+    opacity: 0; /* Hidden initially */
+    transition: opacity 0.4s ease-in-out; /* Smooth transition */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* When hovering over the parent li, show the overlay */
+  li:hover .test {
+    opacity: 1;
+    cursor: default;
+  }
+
+  li:hover img{
+    object-fit: fill;
+  }
+
+  li img {
+    transition: transform 0.4s ease-in-out; /* Smooth zoom transition */
+   } 
+  
+  /* When hovering over the li, zoom in the image */
+  li:hover img {
+    transform: scale(1.2); /* Zoom in the image by 10% */
+  }

@@ -1,0 +1,21 @@
+
+.myli a{
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    padding:10px;
+} 
+
+header{
+    /* background-color: black; */
+}
+
+.myli:hover{
+    a{
+        color:black;
+    }
+    background-color: rgb(244, 239, 244);
+    /* border:1px solid gray; */
+    color:black;
+    border-radius: 10px;
+}
