@@ -1,22 +1,40 @@
 import React, { useEffect, useState } from "react";
 import  db  from "../firebase/firebase";
-import { addDoc, collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import './AddCategory.css';
-import { savetoDb,fetchData,deleteFromDb } from "../utils/savetoDb";
+import { savetoDb,deleteFromDb } from "../utils/savetoDb";
+
 
 const AddCategory = () => {
   const [category, setCategory] = useState("");
   const [list ,setList]=useState([{name:"loading",id:1},]);
+  const [slider,setSlider]=useState([])
+  const [sliderLink,setSliderLink]=useState('')
 
   const addCategory = async (e) => {
     e.preventDefault();
-    savetoDb("categories",{name:category});
+    savetoDb("categories",{name:category,slider});
       setCategory("");
-   
+      setSlider([])
+
   };
 
+
+  const handleAddSlider= ()=>{
+      if(!sliderLink)return;
+      setSlider([...slider,sliderLink]);
+      setSliderLink("");
+  }
+
+  const handleRemove = (id)=>{
+    const newSlider = slider.filter((item,ind)=>ind!==id);
+    setSlider(newSlider);
+  }
+
+  
+
   const handleDelete =async (id)=>{
-    deleteFromDb("categories",id)
+    deleteFromDb("categories",id);
   }
 
   useEffect(() => {
@@ -28,7 +46,7 @@ const AddCategory = () => {
   }, []); 
 
   return (
-    <div>
+    <div className="">
       
       <ul className="d-flex border gap-2">
         {list.map((item)=>{
@@ -39,7 +57,7 @@ const AddCategory = () => {
         })}
       </ul>
 
-
+        <div>
       <h2>Add Category</h2>
       <form onSubmit={addCategory}>
         <input
@@ -47,9 +65,17 @@ const AddCategory = () => {
           placeholder="Category Name"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-        />
-        <button type="submit">Add Category</button>
+        /><br/>
+        <input type="text" value={sliderLink} placeholder="slider link" onChange={(e)=>setSliderLink(e.target.value)}/>
+        <button type="button" className="btn btn-sm btn-primary ms-1" onClick={handleAddSlider}>Add link</button><br/>
+        <button type="submit" className="btn btn-primary btn-sm">Add Category</button>
       </form>
+      <ul>
+          {slider.map((item,ind)=><li className="sliderLi" onClick={()=>handleRemove(ind)}  key={ind}>
+            Image {ind+1} <span className="text-danger">X</span>
+            </li>)}
+      </ul>
+      </div>
     </div>
   );
 };

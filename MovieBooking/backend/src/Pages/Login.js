@@ -27,7 +27,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className='text-center admin'>
       <h2>Admin Login</h2>
       <form onSubmit={handleSubmit}>
         <input

@@ -3,6 +3,7 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import RootLayout from "./Pages/RootLayout";
 import Home from "./Pages/Home";
 import './App.css'
+import Moviepage from "./components/Moviepage";
 
 export default function App(){
  
@@ -12,6 +13,7 @@ export default function App(){
     element:<RootLayout/>,
     children:[
       {path:"/",element:<Home/>},
+      {path:"/moviepage",element:<Moviepage/>},
     ]
   }
   

@@ -1,0 +1,20 @@
+.sidebar{
+    /* border:2px solid black; */
+    border-right: 1px solid black;
+    padding-right: 10px;
+}
+.sidebar ul{
+    margin: 0;
+    /* margin-right: 10px; */
+}
+
+.sidebar li{
+    border:1px solid black;
+    width: 100%;
+    padding:2px;
+
+}
+
+.sidebar li:hover{
+    cursor: pointer;
+}

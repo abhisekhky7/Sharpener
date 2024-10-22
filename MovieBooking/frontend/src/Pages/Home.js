@@ -4,12 +4,14 @@ import Carausel from "../components/Carausel";
 import { collection, onSnapshot } from "firebase/firestore";
 import db from "../firebase/firebase";
 import MoviesAtTop from "../components/MoviesAtTop";
+import { useSelector } from "react-redux";
+import BrowseMovie from "../components/BrowseMovie";
 
 export default function Home() {
   const [list, setList] = useState([]);
-  const [category,setCategory]=useState('');
+  const [filterList,setFilterList]=useState([]);
+  const category = useSelector((state)=>state.movie.category);
 
-  console.log(list);
 
   useEffect(
     () =>
@@ -19,10 +21,23 @@ export default function Home() {
     []
   );
 
+
+  useEffect(() => {
+    if (list.length > 0) {
+      const newList = list.filter((item) =>item.category==category);
+      setFilterList(newList);
+    } else {
+      setFilterList([]);
+    }
+  }, [list, category]);
+
   return (
     <div className="text-center mt-0 mb-5">
       <Carausel />
-      <MoviesAtTop list={list}/>
+      <MoviesAtTop list={filterList}/>
+      <BrowseMovie movies={list}/>
     </div>
   );
 }
+
+

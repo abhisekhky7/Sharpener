@@ -3,6 +3,8 @@ import AddCategory from './AddCategory';
 import AddMovies from './AddMovies';
 import ShowTimeManagement from './ShowTimeManagement';
 import BookedMovies from './BookedMovies';
+import './Dashboard.css';
+
 
 export default function Dashboard() {
 
@@ -25,11 +27,11 @@ export default function Dashboard() {
     return (
       <div className='d-flex mt-3 ' style={{height:"90vh"}}>
   
-        <ul className='fw-semibold lix-3 fs-6  border w-25 text-center'>
-          <li onClick={()=>handleShow('addCategory')} className='sidelianel liy-2 '> Add Category</li>
-          <li  onClick={()=>handleShow('addMovie')}  className='sidelianel '> Add Movie</li>
-          <li  onClick={()=>handleShow('showtimeManagement')}  className='sidelianel '> ShowTime Management</li>
-          <li  onClick={()=>handleShow('bookedMovies')}  className='sidelianel '> Booked Movies</li>
+        <ul className='fw-semibold  fs-6 w-25 d-flex flex-column'>
+          <li onClick={()=>handleShow('addCategory')} className='btn btn-outline-primary  '> Add Category</li>
+          <li  onClick={()=>handleShow('addMovie')}  className='btn btn-outline-primary '> Add Movie</li>
+          <li  onClick={()=>handleShow('showtimeManagement')}  className='btn btn-outline-primary '> ShowTime Management</li>
+          <li  onClick={()=>handleShow('bookedMovies')}  className='btn btn-outline-primary '> Booked Movies</li>
         </ul>
        
         <div className='border w-75 ms-5'> 

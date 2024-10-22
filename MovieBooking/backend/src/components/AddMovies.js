@@ -1,4 +1,3 @@
-// src/pages/AddMovie.js
 import { addDoc, collection, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import db from '../firebase/firebase'
@@ -15,7 +14,7 @@ const AddMovie = () => {
     releaseDate: '',
     language: '',
     imdbRating: '',
-    trailerLink: '',
+    category: '',
     imageLink:'',
   });
   const handleDelete=(id)=>{
@@ -58,12 +57,11 @@ const AddMovie = () => {
     }
   };
 
-
   return (
     <div>
 
 
-<ul className="d-flex border gap-2">
+<ul className="d-flex container row row-cols-auto  gap-2">
         {list.map((item)=>{
            return <li key={item.id} className="d-flex align-items-center  rounded-2">
            {item.name}
@@ -81,10 +79,10 @@ const AddMovie = () => {
         <input type="date" name="releaseDate" value={movieDetails.releaseDate} onChange={handleChange} /><br/>
         <input type="text" name="language" placeholder="Language" value={movieDetails.language} onChange={handleChange} /><br/>
         <input type="number" name="imdbRating" placeholder="IMDB Rating"  value={movieDetails.imdbRating}onChange={handleChange} /><br/>
-        <input type="text" name="trailerLink" placeholder="Trailer Link" value={movieDetails.trailerLink} onChange={handleChange} /><br/>
+        <input type="text" name="category" placeholder="Category" value={movieDetails.category} onChange={handleChange} /><br/>
         <input type="text" name="imageLink" placeholder="Image Link" value={movieDetails.imageLink} onChange={handleChange} /><br/>
        
-        <button type="submit">Add Movie</button>
+        <button type="submit" className='btn btn-primary btn-sm mt-2'>Add Movie</button>
       </form>
     </div>
   );

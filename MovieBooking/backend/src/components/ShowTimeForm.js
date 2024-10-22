@@ -33,8 +33,7 @@ const ShowTimeForm = ({ movie }) => {
     const updatedShowtimes = showtimes.filter((_, i) => i !== index);
     const movieRef = doc(db, 'movies', movie.id);
     await updateDoc(movieRef, { showtimes: updatedShowtimes });
-
-    setShowtimes(updatedShowtimes); // Update the local state
+    setShowtimes(updatedShowtimes);
   };
 
   return (
@@ -55,7 +54,7 @@ const ShowTimeForm = ({ movie }) => {
           onChange={handleChange}
           placeholder="Select Time"
         />
-        <button type="button" onClick={handleAddShowtime}>
+        <button type="button" className='btn btn-sm ms-1 btn-outline-primary' onClick={handleAddShowtime}>
           Add Showtime
         </button>
       </form>
@@ -65,7 +64,7 @@ const ShowTimeForm = ({ movie }) => {
         {showtimes.map((st, index) => (
           <li key={index} >
             {st.date} at {st.time}
-            <button onClick={() => handleDeleteShowtime(index)} className="btn btn-danger ms-2">
+            <button onClick={() => handleDeleteShowtime(index)} className="btn btn-danger ms-2 btn-sm my-1">
               Delete
             </button>
           </li>

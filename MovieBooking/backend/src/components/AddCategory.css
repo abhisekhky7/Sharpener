@@ -1,3 +1,7 @@
 ul li{
     list-style-type: none;
 }
+
+.sliderLi:hover{
+    cursor: pointer;
+}
