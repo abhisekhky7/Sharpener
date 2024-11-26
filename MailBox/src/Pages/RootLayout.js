@@ -18,6 +18,11 @@ export default function RootLayout() {
   const uid = useSelector((state) => state.auth.uid); 
   const token = useSelector((state) => state.auth.token);
 
+
+  useEffect(()=>{
+    if(!isLoggedIn)navigate('/login')
+  },[])
+
   const handleLogout = () => {
     dispatch(logout())
     navigate("/login");
@@ -42,7 +47,7 @@ export default function RootLayout() {
 
   return (
     <div className="">
-      {isLoggedIn && (
+      { (
         <>
           <div className="border bg-dark text-white d-flex justify-content-between align-items-center p-2">
             <p className="fw-bold pt-1 fs-4">Welcome to Mailbox </p>
@@ -58,7 +63,7 @@ export default function RootLayout() {
           </div>
         </>
 
-      )}
+      ) }
       <Outlet />
 
     </div>
